@@ -22,7 +22,9 @@ app.use(cookieParser());
 import healthCheckRoutes from "./routes/healthcheck.routes.js";
 import userRouter from "./routes/user.router.js";
 //handle routes
-
+app.get('/',(req,res)=>{
+  res.send(`<h1>Welcome to my application</h1>`);
+})
 app.use('/api/v1/healthcheck',healthCheckRoutes);
 app.use('/api/v1/users',userRouter);
 app.use((req, res, next) => {

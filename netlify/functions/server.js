@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import ServerlessHttp from "serverless-http";
-import errorHandler from "./middlewares/error.middleware.js";
+import userRouter from "../../src/routes/user.router.js";
+import errorHandler from "../../src/middlewares/error.middleware.js";
+import healthCheckRoutes from "../../src/routes/healthcheck.routes.js";
 const app = express();
 
 const serverless = ServerlessHttp();
@@ -22,8 +24,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded())
 app.use(cookieParser());
 //import routes
-import healthCheckRoutes from "./routes/healthcheck.routes.js";
-import userRouter from "./routes/user.router.js";
+
 //handle routes
 app.get('/.netlify/functions/api/welcome',(req,res)=>{
   res.send(`<h1>Welcome to my application</h1>`);

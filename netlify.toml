@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = "dist" # Or whatever your build directory is
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/express/:splat"
+  status = 200
